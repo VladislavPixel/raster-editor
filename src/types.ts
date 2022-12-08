@@ -1,3 +1,5 @@
-export interface IOptions<T> {
-	components: T[];
+import type { IConstructor } from "./components/type";
+
+export interface IOptions {
+	components: IConstructor[];
 }

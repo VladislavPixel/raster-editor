@@ -25,8 +25,22 @@ class Dom implements IDom{
 		return selector;
 	}
 
-	append(domString: string): void {
+	append(domString: string | Element): Element {
 		this.element.append(domString);
+
+		return this.element;
+	}
+
+	html() {
+
+	}
+
+	clear() {
+
+	}
+
+	on() {
+
 	}
 }
 
@@ -35,8 +49,14 @@ class ImprovedDomAPI {
 		return new Dom(selector);
 	}
 
-	create() {
-		
+	create(typeElement: string, arrClasses?: string[]) {
+		const newElement = document.createElement(typeElement);
+
+		if (arrClasses !== undefined) {
+			newElement.classList.add(...arrClasses);
+		}
+
+		return this.wrap(newElement);
 	}
 }
 

@@ -6,8 +6,6 @@ import { Actions } from "./components/actions/actions";
 import { Canvas } from "./components/canvas/canvas";
 import { ContainerForLayers } from "./components/container-for-layers/container-for-layers";
 
-console.log("Hello world");
-
 const mainEditor = new MainEditor("#app", {
 	components: [Header, Actions, ToolsContainer, Canvas, ContainerForLayers]
 });
