@@ -1,22 +1,25 @@
 import { improvedDomAPI } from "../../core/improved-dom-api";
 import type { IDom } from "../../core/types";
 import type { IOptions } from "../../types";
-import type { IConstructor } from "../type";
+import type { IConstructor, Constructors } from "../type";
 
 class MainEditor {
 	root: IDom;
 
-	components: IConstructor[];
+	components: Array<IConstructor>;
+
+	arrayForInstanceComponents: Array<Constructors>;
 
 	constructor(selector: string | Element, options: IOptions) {
 		this.root = improvedDomAPI.wrap(selector);
 		this.components = options.components;
+		this.arrayForInstanceComponents = [];
 	}
 
-	getContent() {
+	getContent(): IDom {
 		const wrapper = improvedDomAPI.create("div", ["app-conatiner__wrapper", "wrapper"]);
 
-		this.components = this.components.map(Component => {
+		this.components.forEach((Component: IConstructor): void => {
 			const constructorName = Component.name;
 
 			let isFirstSegment = true;
@@ -37,20 +40,24 @@ class MainEditor {
 
 			const instanceComponent = new Component(rootForComponent);
 
-			const result = instanceComponent.parentSegment.append(instanceComponent.toHTML());
+			rootForComponent.append(instanceComponent.toHTML());
 
-			wrapper.append(result);
+			wrapper.append(rootForComponent.element);
 
-			return Component;
+			this.arrayForInstanceComponents.push(instanceComponent);
 		});
 
-		return wrapper.element;
+		return wrapper;
 	}
 
-	render() {
-		const content = this.getContent();
+	render(): void {
+		const contentIDom = this.getContent();
 
-		this.root.append(content);
+		this.root.append(contentIDom.element);
+
+		this.arrayForInstanceComponents.forEach((instanceComponent): void => {
+			instanceComponent.init();
+		})
 	}
 }
 

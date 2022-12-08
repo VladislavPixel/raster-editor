@@ -6,11 +6,17 @@ class Header extends Editor implements IHeader {
 	static nameConstructor: string = this.constructor.name;
 
 	constructor(parentSegment: IDom) {
-		super(parentSegment);
+		super(parentSegment, {
+			listeners: ["click"]
+		});
 	}
 
 	toHTML(): string {
 		return "<header>Header Component</header>"
+	}
+
+	onClick(): void {
+		console.log("Ты кликнул по HEADER");
 	}
 }
 

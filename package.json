@@ -12,7 +12,8 @@
 	"keywords": [
 		"javascript",
 		"typescript",
-		"editor"
+		"editor",
+		"raster-editor"
 	],
 	"author": "pixel. developer",
 	"license": "ISC",

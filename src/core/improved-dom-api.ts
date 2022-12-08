@@ -25,22 +25,21 @@ class Dom implements IDom{
 		return selector;
 	}
 
-	append(domString: string | Element): Element {
-		this.element.append(domString);
+	append(domDesign: string | Element | HTMLElement): void {
+		if (typeof domDesign === "string") {
+			this.element.insertAdjacentHTML("beforeend", domDesign);
 
-		return this.element;
-	}
-
-	html() {
-
+		} else {
+			this.element.append(domDesign);
+		}
 	}
 
 	clear() {
 
 	}
 
-	on() {
-
+	on(listener: string, callback: () => unknown): void{
+		this.element.addEventListener(listener, callback);
 	}
 }
 
