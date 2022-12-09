@@ -12,7 +12,7 @@ class Header extends Editor implements IHeader {
 	}
 
 	toHTML(): string {
-		return "<header>Header Component</header>"
+		return "<header>Header Component</header>";
 	}
 
 	onClick(): void {

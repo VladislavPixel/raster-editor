@@ -1,6 +1,6 @@
 import type { IDom } from "./types";
 
-class Dom implements IDom{
+class Dom implements IDom {
 	element: Element;
 
 	constructor(selector: string | Element) {
@@ -28,27 +28,28 @@ class Dom implements IDom{
 	append(domDesign: string | Element | HTMLElement): void {
 		if (typeof domDesign === "string") {
 			this.element.insertAdjacentHTML("beforeend", domDesign);
-
 		} else {
 			this.element.append(domDesign);
 		}
 	}
 
-	clear() {
+	clear(): void {}
 
+	on(listener: string, callback: () => unknown): void {
+		this.element.addEventListener(listener, callback);
 	}
 
-	on(listener: string, callback: () => unknown): void{
-		this.element.addEventListener(listener, callback);
+	off(listener: string, callback: () => unknown): void {
+		this.element.removeEventListener(listener, callback);
 	}
 }
 
 class ImprovedDomAPI {
-	wrap(selector: string | Element): IDom {
+	static wrap(selector: string | Element): IDom {
 		return new Dom(selector);
 	}
 
-	create(typeElement: string, arrClasses?: string[]) {
+	static create(typeElement: string, arrClasses?: string[]) {
 		const newElement = document.createElement(typeElement);
 
 		if (arrClasses !== undefined) {
@@ -59,6 +60,4 @@ class ImprovedDomAPI {
 	}
 }
 
-const improvedDomAPI = new ImprovedDomAPI();
-
-export { improvedDomAPI };
+export { ImprovedDomAPI };

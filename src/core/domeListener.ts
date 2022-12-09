@@ -1,4 +1,4 @@
-import type { IDom, IDomListener } from "./types";
+import type { IDom, IDomListener, Component } from "./types";
 
 class DomListener implements IDomListener {
 	parentSegment: IDom;
@@ -16,21 +16,24 @@ class DomListener implements IDomListener {
 		return result;
 	}
 
-	initDOMListener(): void {
+	initDOMListener(this: Component): void {
 		this.listeners.forEach((listener: string): void => {
 			const nameHandler = this.getCorrectHandlerName(listener);
-			console.log(this, "THIS");
 
-			if (!(this.hasOwnProperty(nameHandler))) {
-				throw new Error("The method is not defined in the constructor.");
+			if (!(nameHandler in this)) {
+				throw new Error("The method-handler is not defined in the constructor.");
 			}
 
-			//this.parentSegment.on(listener, this[nameHandler]);
-		})
+			this.parentSegment.on(listener, this[nameHandler]);
+		});
 	}
 
-	removeDOMListener(): void {
+	removeDOMListener(this: Component): void {
+		this.listeners.forEach((listener: string): void => {
+			const nameHandler = this.getCorrectHandlerName(listener);
 
+			this.parentSegment.off(listener, this[nameHandler]);
+		});
 	}
 }
 

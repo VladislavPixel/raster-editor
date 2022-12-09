@@ -1,19 +1,19 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "experimentalDecorators": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "noImplicitOverride": true,
-    "importsNotUsedAsValues": "error",
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "module": "es6",
-    "target": "ES2020",
-    "jsx": "react",
-    "allowJs": true,
-    "moduleResolution": "node"
-  },
-  "exclude": ["node_modules"],
+	"compilerOptions": {
+		"outDir": "./dist/",
+		"experimentalDecorators": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"noImplicitOverride": true,
+		"importsNotUsedAsValues": "error",
+		"sourceMap": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"module": "es6",
+		"target": "ES2020",
+		"jsx": "react",
+		"allowJs": true,
+		"moduleResolution": "node"
+	},
+	"exclude": ["node_modules"]
 }

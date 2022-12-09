@@ -5,18 +5,32 @@ import type { Header } from "./header/header";
 import type { ToolsContainer } from "./tools-container/tools-container";
 import type { IDom } from "../core/types";
 
-export type Constructors = Actions | Canvas | ContainerForLayers | Header | ToolsContainer;
+export type Constructors =
+	| Actions
+	| Canvas
+	| ContainerForLayers
+	| Header
+	| ToolsContainer;
 
 export interface IConstructor {
-	new(rootForComponent: IDom): Constructors;
+	new (rootForComponent: IDom): Constructors;
 }
 
-export interface IOptions {
+export interface ISettings {
 	listeners?: string[];
 }
 
-export interface Editor {
-	init(): void;
+export interface IEditor {
+	initListeners(): void;
+	removeListeners(): void;
+}
+
+export interface IMainEditor {
+	root: IDom;
+	components: Array<IConstructor>;
+	arrayForInstanceComponents: Array<Constructors>;
+	getContent(): IDom;
+	render(): void;
 }
 
 export interface IHeader {

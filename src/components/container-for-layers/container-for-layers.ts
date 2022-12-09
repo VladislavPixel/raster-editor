@@ -12,7 +12,7 @@ class ContainerForLayers extends Editor implements IContainerForLayers {
 	}
 
 	toHTML(): string {
-		return "<div>ContainerForLayers</div>"
+		return "<div>ContainerForLayers</div>";
 	}
 
 	onClick(): void {

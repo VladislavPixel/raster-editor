@@ -12,7 +12,7 @@ class Canvas extends Editor implements ICanvas {
 	}
 
 	toHTML(): string {
-		return "<div>Canvas</div>"
+		return "<div>Canvas</div>";
 	}
 
 	onClick(): void {

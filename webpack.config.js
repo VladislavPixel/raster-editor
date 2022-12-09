@@ -54,7 +54,7 @@ module.exports = (env, argv) => {
 			clean: true
 		},
 		resolve: {
-			extensions: [".tsx", ".ts",".js"],
+			extensions: [".tsx", ".ts", ".js"],
 			alias: {
 				"@": path.resolve(__dirname, "src"),
 				"@core": path.resolve(__dirname, "src", "core")
@@ -73,7 +73,7 @@ module.exports = (env, argv) => {
 				{
 					test: /\.tsx?$/,
 					use: "ts-loader",
-					exclude: /node_modules/,
+					exclude: /node_modules/
 				},
 				{
 					test: /\.s[ac]ss$/i,

@@ -12,7 +12,7 @@ class ToolsContainer extends Editor implements IToolsContainer {
 	}
 
 	toHTML(): string {
-		return "<div>ToolsContainer</div>"
+		return "<div>ToolsContainer</div>";
 	}
 
 	onClick(): void {

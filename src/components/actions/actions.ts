@@ -12,7 +12,7 @@ class Actions extends Editor implements IActions {
 	}
 
 	toHTML(): string {
-		return "<div>Actions</div>"
+		return "<div>Actions</div>";
 	}
 
 	onClick(): void {
